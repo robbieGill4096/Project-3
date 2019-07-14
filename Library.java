@@ -16,7 +16,7 @@ private ArrayList<Book> bookLibrary;
 	@Override
 	public ArrayList<Book> getBooks() {
 		ArrayList<Book> copyBookLibrary = new ArrayList<Book>();
-		for (Book book : bookLibrary ) {
+		for (Book book : this.bookLibrary ) {
 			copyBookLibrary.add(book);
 		}
 		
@@ -32,8 +32,10 @@ private ArrayList<Book> bookLibrary;
 
 	@Override
 	public void removeBook(int index) {
-		// TODO Auto-generated method stub
-		this.bookLibrary.remove(index); 
+		if (index <= this.bookLibrary.size()-1) {
+		this.bookLibrary.remove(index);
+		} 
+		
 	}
 
 	@Override
@@ -51,7 +53,7 @@ private ArrayList<Book> bookLibrary;
 		String stringAndInfo = "";
 		for (Book book : this.bookLibrary) {
 			String bookInfo = book.toString();
-			String formattedBookInfo = "Index: " + index + " " + bookInfo + "\n";
+			String formattedBookInfo = "Index: " + index + " " + bookInfo + " \n";
 			stringAndInfo += formattedBookInfo;
 			
 			index += 1;

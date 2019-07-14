@@ -14,9 +14,9 @@ public class Book implements BookInterface {
 	private String genre;
 	private String filename;
 	
-	public Book (String title,String author) {
-		this.title = title;
-		this.author = author;
+	public Book (String Title,String Author) {
+		this.title = Title;
+		this.author = Author;
 		this.genre = null;
 		this.filename = null;
 		
@@ -25,7 +25,7 @@ public class Book implements BookInterface {
 	@Override
 	public String getTitle() {
 		
-		return author;
+		return title;
 	}
 
 	@Override
@@ -80,24 +80,32 @@ public class Book implements BookInterface {
 		String author = this.getAuthor();
 		String genre = this.getGenre();
 		String fileName = this.getFilename();
-		if ((title== null || author == null || genre == null || fileName == null) == true) {
+		
+		if (title == null){
 			return false;
 		}
+		if (author == null){
+			return false;
+		}
+		if (genre == null){
+			return false;
+		}
+		if (fileName == null){
+			return false;
+		}
+		else {
 		//and filename exists.
 		File bookFile = new File (fileName);
 		Scanner fileReader;
 		
 		try {fileReader = new Scanner(bookFile);
-		if ((title== null || author == null || genre == null || fileName == null) == true) {
-			return false;
-		}
-		else {
-			return true;}
+		
+			return true;
 		}
 		catch (FileNotFoundException e) {
 			return false;
 			}
-		
+		}
 	}
 
 	@Override
@@ -132,7 +140,7 @@ public class Book implements BookInterface {
 		author = this.getAuthor();
 		genre = this.getGenre();
 		filename = this.getFilename();
-		String strBookAttributes ="Title: " + title + "Author: " + "" + author+ "Genre: " +genre+ "Filename: " +filename;
+		String strBookAttributes ="Title: " + title + " Author: " + "" + author+ " Genre: " + genre + " Filename: " + filename;
 		
 		return strBookAttributes;
 	}
