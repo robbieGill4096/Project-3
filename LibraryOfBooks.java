@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 /*
@@ -50,7 +52,7 @@ public class LibraryOfBooks {
 				System.out.println("Contents of Library");
 				String bookList = littleLibrary.toString();
 				System.out.println(bookList);
-				System.out.println(selectionPrompt);
+				System.out.print(selectionPrompt);
 				break;
 			case "A": 
 				System.out.println("Add a book to the library....\n");
@@ -134,16 +136,13 @@ public class LibraryOfBooks {
 			default:
 				if (selection.equals("Q") != true) {
 				System.out.println("Invalid Selection!");
-				System.out.println(selectionPrompt);
+				System.out.print(selectionPrompt);
 				}
 				break;
 			}
 		}
 		System.out.println("Goodbye!");
 	}	
-
-	
-	
 	
 	public static void main(String[] args) {
 		menuPrompt();
