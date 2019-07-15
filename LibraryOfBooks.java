@@ -2,11 +2,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
-/*
- * Navigation Menu Structure
+/**
+ * 
+ * 
+ * @author Robbie
+ *
+ * * Navigation Menu Structure
  * Console UI
  */
-
 public class LibraryOfBooks {
 	// main menu
 	static String menuPrompt = "|*** LIBRARY OF BOOKS ***|";
@@ -29,7 +32,9 @@ public class LibraryOfBooks {
 	static String dividerPrompt = "==================================";
 	static LibraryInterface littleLibrary = new Library();
 	static Scanner reader = new Scanner(System.in);
-
+	/**
+	 * contains all the String data that is used to prompt the main menu to the user.
+	 */
 	public static void menuPrompt() {
 		System.out.println(borderPrompt);
 		System.out.println(menuPrompt);
@@ -42,7 +47,10 @@ public class LibraryOfBooks {
 		System.out.println(borderPrompt);
 		System.out.print(selectionPrompt);
 	}
-
+/**
+ * Displays the content of a book library to the user 
+ * 
+ */
 	public static void content() {
 		System.out.println("View contents of the Library....");
 		System.out.println(dividerPrompt);
@@ -53,7 +61,10 @@ public class LibraryOfBooks {
 		System.out.print(selectionPrompt);
 
 	}
-
+/**
+ * asks a user for input about the book they wish to add to the library array.
+ * 
+ */
 	public static void addBook() {
 		System.out.println("Add a book to the library....\n");
 		System.out.print("Please enter the books Title: ");
@@ -74,7 +85,9 @@ public class LibraryOfBooks {
 		System.out.print(selectionPrompt);
 
 	}
-
+/**
+ * removes a book index if it is within the scope of the library array.
+ */
 	public static void deleteBook() {
 		System.out.println("Remove a book from the library...\n");
 		System.out.print("Please enter the index of the book: ");
@@ -103,7 +116,12 @@ public class LibraryOfBooks {
 
 		}
 	}
-
+/**
+ * Parses a string text file into individual pages to make the book more readable 
+ * @param fulltext a String value that the user wishes to parse into pages.
+ * @param index specifies which page the user wants specifically.
+ * @return returns the specific page index to the user to read.
+ */
 	public static String getPage(String fulltext, int index) {
 		ArrayList<String> bookPages = new ArrayList<String>();
 		final int INCREMENT = 1500;
@@ -126,7 +144,11 @@ public class LibraryOfBooks {
 		return selectedPage;
 
 	}
-
+/**
+ * allows the user to read a book in the library, then select to either scroll through the book or
+ * read it page by page. 
+ * 
+ */
 	public static void readBook() {
 		try {
 			System.out.println("Read a book from the library...\n");
@@ -151,7 +173,7 @@ public class LibraryOfBooks {
 					String pageNum = reader.nextLine();
 					Integer pageNumber = Integer.parseInt(pageNum);
 					System.out.println(getPage(selectedBook.getText(), pageNumber));
-					System.out.println();
+					System.out.println("							page: " + pageNumber);
 					System.out.println("Would you like to keep reading? (Y) or (N)");
 					String response = "";
 
@@ -164,7 +186,7 @@ public class LibraryOfBooks {
 						pageNumber += 1;
 
 						System.out.println(getPage(selectedBook.getText(), pageNumber));
-						System.out.println();
+						System.out.println("							page: " + pageNumber);
 						System.out.println("Would you like to keep reading? (Y) or (N)");
 						response += input;
 
@@ -188,8 +210,10 @@ public class LibraryOfBooks {
 
 		}
 	}
-
-
+/**
+ * allows the user to make a selection based upon input.
+ * 
+ */
 	public static void mainMenu() {
 		String selection = "";
 		while (selection.equals("Q") != true) {
